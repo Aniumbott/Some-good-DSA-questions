@@ -5,6 +5,7 @@ and, (1²+2²+....x²+x²+...n²) - (1²+2²+....n²) = x²-y² = ss
 so, x + y = ss/s
 x = (s + ss/s) / 2
 y = x-s
+Time complexity : O(n)
 */
 
 vector<int> Solution::repeatedNumber(const vector<int> &A) {

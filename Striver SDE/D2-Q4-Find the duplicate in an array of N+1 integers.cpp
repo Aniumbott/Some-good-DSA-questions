@@ -5,6 +5,7 @@ then operations are slow = nums[slow] that jums 1 step where fast = nums[nums[fa
 so if slow travels a distance then fast must have traveled 2a distance
 So solw and fast will meet at the entrypoint of the loop then eventually meed at the common element thats why two loops are required,
 best case to understand : [2, 5, 9, 6, 9, 3, 8, 9, 7, 1]
+Time complexity : O(n)
 */
 
 class Solution {

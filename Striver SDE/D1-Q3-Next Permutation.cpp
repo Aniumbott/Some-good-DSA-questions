@@ -6,6 +6,7 @@ then we will check the greater num in nums[k+1 to n] then swap them
 now nums = 1 2 3 4 5 9 6 4 3
 then we will reverse the nums[k+1 to n]
 next nums = 1 2 3 4 5 9 3 4 6
+Time complexity : O(n)
 */
 
 class Solution {

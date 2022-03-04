@@ -1,6 +1,7 @@
 /* Expalination:
 swaping witin three pointers low, mid and high
 low = 0, mid = 0, high = nums.size()-1
+Time complexity : O(n)
 */
 
 class Solution {

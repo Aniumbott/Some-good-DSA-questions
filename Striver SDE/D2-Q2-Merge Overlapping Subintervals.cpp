@@ -4,6 +4,7 @@ Then set the initial interval = first interval of given vector
 Then check if end time of next interval is lesser or equal.
 If yes, then set the end time of the last interval of merge array = max(initial, end time of next interval)
 if not then add the next interval to the merge array.
+Time Complexity: O(NlogN) + O(N) (O(NlogN) for sorting and O(N) for traversing through the array.)
 */
 
 class Solution

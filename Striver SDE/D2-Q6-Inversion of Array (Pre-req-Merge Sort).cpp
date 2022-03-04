@@ -1,20 +1,19 @@
 /*Explaination :
-The main idea is to use Merge sor because if we do brute force it comes out 0(n^2) but in merge sort its 0(nlogn)
+The main idea is to use Merge sor because if we do brute force it comes out 0(n^2) but in merge sort its O(nlogn)
 Here in merge sort if you know how algo works then it will be easy
 Basically we are adding an extra logic to it that whenever the a[i] > a[j] with i<j the count increases.
 */
 
-#include<bits/stdc++.h>
-using namespace std;
-
-int merge(int arr[],int temp[],int left,int mid,int right)
+long long merge(long long arr[], long long temp[], int left, int mid, int right)
 {
-    int inv_count=0;
+    long long inv_count = 0;
     int i = left;
     int j = mid;
     int k = left;
-    while((i <= mid-1) && (j <= right)){
-        if(arr[i] <= arr[j]){
+    while ((i <= mid - 1) && (j <= right))
+    {
+        if (arr[i] <= arr[j])
+        {
             temp[k++] = arr[i++];
         }
         else
@@ -24,41 +23,36 @@ int merge(int arr[],int temp[],int left,int mid,int right)
         }
     }
 
-    while(i <= mid - 1)
+    while (i <= mid - 1)
         temp[k++] = arr[i++];
 
-    while(j <= right)
+    while (j <= right)
         temp[k++] = arr[j++];
 
-    for(i = left ; i <= right ; i++)
+    for (i = left; i <= right; i++)
         arr[i] = temp[i];
-    
+
     return inv_count;
 }
 
-int merge_Sort(int arr[],int temp[],int left,int right)
+long long merge_Sort(long long arr[], long long temp[], int left, int right)
 {
-    int mid,inv_count = 0;
-    if(right > left)
+    int mid;
+    long long inv_count = 0;
+    if (right > left)
     {
-        mid = (left + right)/2;
+        mid = (left + right) / 2;
 
-        inv_count += merge_Sort(arr,temp,left,mid);
-        inv_count += merge_Sort(arr,temp,mid+1,right);
+        inv_count += merge_Sort(arr, temp, left, mid);
+        inv_count += merge_Sort(arr, temp, mid + 1, right);
 
-        inv_count += merge(arr,temp,left,mid+1,right);
+        inv_count += merge(arr, temp, left, mid + 1, right);
     }
     return inv_count;
 }
 
-int main()
+long long getInversions(long long *arr, int n)
 {
-    int arr[]={5,3,2,1,4};
-    int n=5;
-    int temp[n];
-    int ans = merge_Sort(arr,temp,0,n-1);
-    cout<<"The total inversions are "<<ans<<endl; 
-
-
-    return 0;
+    long long temp[n];
+    return merge_Sort(arr, temp, 0, n - 1);
 }

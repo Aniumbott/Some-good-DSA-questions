@@ -1,4 +1,5 @@
 // Explaination : creating a vector of vector of int which store the values of the Triagle.
+// Time Complexity = O(numRows²)
 
 class Solution {
 public:
