@@ -24,7 +24,6 @@ freopen("output.txt", "w", stdout);
 #endif
 }
 
-
 void solve()
 {
     int n,ma=0,mi=0;cin>>n;
@@ -37,7 +36,6 @@ void solve()
 	}
 	cout<<ma+n-mi-((mi<ma)?2:1)<<endl;
 }
-
 
 int main(){
     fastio;
