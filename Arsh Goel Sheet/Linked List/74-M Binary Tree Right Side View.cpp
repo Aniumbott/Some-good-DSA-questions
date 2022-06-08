@@ -1,0 +1,36 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ * We are doing a BFS transversal then we add the last val of the nodes at the same level of height.
+ */
+class Solution {
+public:
+    vector<int> ans;
+    
+    vector<int> rightSideView(TreeNode* root) {
+        if(root==NULL)return ans;
+        queue<TreeNode*>q;
+        q.push(root);
+        while(!q.empty()){
+            int s=q.size();
+            int dat=0;
+            while(s){
+                TreeNode*temp=q.front();
+                q.pop();
+                dat=temp->val;
+                if(temp->left!=NULL)q.push(temp->left);
+                if(temp->right!=NULL)q.push(temp->right);
+                s--;
+            }
+            ans.push_back(dat);
+        }
+        return ans;
+    }
+};
