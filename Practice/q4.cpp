@@ -33,14 +33,38 @@ void online_judge()
 
 void solve()
 {
-    for (int i = 0; i < 100000; i++)
+    int n;
+    cin >> n;
+    vector<int> a(n), ans(n, 0), in(n, INT_MAX);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+        a[i]--;
+        in[a[i]] = min(in[a[i]], i);
+        if (!ans[a[i]])
+            ans[a[i]]++;
+        // cout << in[a[i]] << endl;
+    }
+    for (int i = 0; i < n; i++)
+    {
+        // cout << in[a[i]] << endl;
+        if ((i - in[a[i]]) % 2 != 0)
+        {
+            // cout << i << " " << a[i] << endl;
+            in[a[i]] = i;
+            ans[a[i]]++;
+            // cout << i << " " << ans[a[i]] << endl;
+        }
+    }
+    for (auto i : ans)
         cout << i << " ";
+    cout << endl;
 }
 
 int main()
 {
     fastio;
-    online_judge();
+    // online_judge();
     // Pre processing
 
     ll t = 1;

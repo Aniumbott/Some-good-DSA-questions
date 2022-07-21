@@ -33,14 +33,18 @@ void online_judge()
 
 void solve()
 {
-    for (int i = 0; i < 100000; i++)
-        cout << i << " ";
+    int n, m;
+    cin >> n >> m;
+    int a, b;
+    a = (n % 2) ? n - 1 : n;
+    b = (m % 2) ? m - 1 : m;
+    cout << (n * m) - (a * b) << endl;
 }
 
 int main()
 {
     fastio;
-    online_judge();
+    // online_judge();
     // Pre processing
 
     ll t = 1;

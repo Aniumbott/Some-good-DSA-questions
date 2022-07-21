@@ -1,3 +1,4 @@
+// Difference of GCDs codeforces round 808 div-2
 #include <bits/stdc++.h>
 
 #define ll long long int
@@ -33,14 +34,32 @@ void online_judge()
 
 void solve()
 {
-    for (int i = 0; i < 100000; i++)
-        cout << i << " ";
+    int n, l, r;
+    cin >> n >> l >> r;
+    int a[n];
+    bool ok = true;
+    for (int i = 1; i <= n; ++i)
+    {
+        a[i] = ((l - 1) / i + 1) * i;
+        ok = ok && a[i] <= r;
+    }
+
+    if (ok)
+    {
+        cout << "YES\n";
+        for (int i = 1; i <= n; ++i)
+            cout << a[i] << " ";
+        cout << endl;
+    }
+
+    else
+        cout << "NO" << endl;
 }
 
 int main()
 {
     fastio;
-    online_judge();
+    // online_judge();
     // Pre processing
 
     ll t = 1;

@@ -31,16 +31,47 @@ void online_judge()
 #endif
 }
 
+bool isPalindrome(string S)
+{
+    for (int i = 0; i < S.length() / 2; i++)
+    {
+        if (S[i] != S[S.length() - i - 1])
+            return false;
+    }
+    return true;
+}
+
 void solve()
 {
-    for (int i = 0; i < 100000; i++)
-        cout << i << " ";
+    int n;
+    string s;
+    cin >> n;
+    cin >> s;
+    int z = 0, o = 0;
+    for (auto c : s)
+    {
+        if (c == '1')
+            o++;
+        else
+            z++;
+    }
+    if (o > z)
+    {
+        while (o--)
+            cout << '1';
+    }
+    else
+    {
+        while (z--)
+            cout << '0';
+    }
+    cout << endl;
 }
 
 int main()
 {
     fastio;
-    online_judge();
+    // online_judge();
     // Pre processing
 
     ll t = 1;

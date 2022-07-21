@@ -33,14 +33,32 @@ void online_judge()
 
 void solve()
 {
-    for (int i = 0; i < 100000; i++)
-        cout << i << " ";
+    int k, ct = 1;
+    cin >> k;
+    int a[3];
+    cin >> a[0] >> a[1] >> a[2];
+    while (k != 0)
+    {
+        if (a[k - 1] == 0)
+            break;
+        else
+        {
+            int tp = a[k - 1];
+            a[k - 1] = 0;
+            k = tp;
+            ct++;
+        }
+    }
+    if (ct == 3)
+        cout << "YES" << endl;
+    else
+        cout << "NO" << endl;
 }
 
 int main()
 {
     fastio;
-    online_judge();
+    // online_judge();
     // Pre processing
 
     ll t = 1;

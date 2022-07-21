@@ -33,14 +33,39 @@ void online_judge()
 
 void solve()
 {
-    for (int i = 0; i < 100000; i++)
-        cout << i << " ";
+    int n;
+    cin >> n;
+    multiset<int> a;
+    for (int i = 0; i < n; i++)
+    {
+        int x;
+        cin >> x;
+        a.insert(x);
+    }
+
+    int c = 1, i = 1;
+
+    while (a.size() > 0)
+    {
+        auto it = a.lower_bound(i);
+        if (it != a.end())
+        {
+            a.erase(it);
+            i++;
+        }
+        else
+        {
+            i = 1;
+            c++;
+        }
+    }
+    cout << c << endl;
 }
 
 int main()
 {
     fastio;
-    online_judge();
+    // online_judge();
     // Pre processing
 
     ll t = 1;

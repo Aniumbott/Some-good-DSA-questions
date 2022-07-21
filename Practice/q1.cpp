@@ -1,3 +1,4 @@
+// Difference Operations codeforces round #808 div-2
 #include <bits/stdc++.h>
 
 #define ll long long int
@@ -33,14 +34,30 @@ void online_judge()
 
 void solve()
 {
-    for (int i = 0; i < 100000; i++)
-        cout << i << " ";
+    int n;
+    cin >> n;
+
+    int p;
+    cin >> p;
+    bool ans = true;
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        int x;
+        cin >> x;
+        if (x % p)
+            ans = false;
+    }
+    if (ans)
+        cout << "YES" << endl;
+    else
+        cout << "NO" << endl;
 }
 
 int main()
 {
     fastio;
-    online_judge();
+    // online_judge();
     // Pre processing
 
     ll t = 1;
