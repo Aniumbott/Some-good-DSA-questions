@@ -27,34 +27,47 @@ void online_judge()
 //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 // Write solution here
+bool valid(ll a[], ll mid, ll n)
+{
+    ll g = 0, r = 0, mx = 0;
+    for (ll i = 0; i < mid; i++)
+        g += a[i];
+    for (ll i = mid; i < n; i++)
+        mx = max(mx, a[i]);
+    for (ll i = mid; i < n; i++)
+        r += abs(a[i] - mx);
+    return g >= r;
+}
+
+ll helper(ll a[], ll n)
+{
+    ll l = 0, r = n, ans = 0;
+    while (l <= r)
+    {
+        ll mid = l + (r - l) / 2;
+        if (valid(a, mid, n))
+        {
+            r = mid - 1;
+            ans = mid;
+        }
+        else
+            l = mid + 1;
+    }
+
+    return ans;
+}
 void solve()
 {
     ll n;
     cin >> n;
-    vector<ll> ans(n, 0);
-    if (n == 1)
-    {
-        cout << 1 << " " << endl;
-    }
-    else
-    {
-        for (ll i = 1; i < n; i += 2)
-        {
-            ans[i] = i;
-        }
-        for (ll i = 0; i < n; i += 2)
-        {
-            ans[i] = i + 2;
-        }
-        if (n % 2)
-        {
-            swap(ans[n - 1], ans[1]);
-            ans[1] = n;
-        }
-        for (auto i : ans)
-            cout << i << " ";
-        cout << endl;
-    }
+    ll a[n] = {0};
+    for (ll i = 0; i < n; i++)
+        cin >> a[i];
+    sort(a, a + n);
+    ll ans = helper(a, n);
+    reverse(a, a + n);
+    ans = min(ans, helper(a, n));
+    cout << ans << endl;
 }
 
 //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-

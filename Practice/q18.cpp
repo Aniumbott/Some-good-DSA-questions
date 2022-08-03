@@ -29,32 +29,36 @@ void online_judge()
 // Write solution here
 void solve()
 {
-    ll n;
-    cin >> n;
-    vector<ll> ans(n, 0);
-    if (n == 1)
+    ll n, x, ct = 0, mn, mx;
+    cin >> n >> x;
+    x *= 2;
+    cin >> mn;
+    mx = mn;
+    for (int i = 1; i < n; i++)
     {
-        cout << 1 << " " << endl;
+        int a;
+        cin >> a;
+        if (a >= mn && a <= mx)
+            continue;
+        else
+        {
+            if (a < mn && abs(a - mx) <= x)
+            {
+                mn = a;
+            }
+            else if (a > mx && abs(a - mn) <= x)
+            {
+                mx = a;
+            }
+            else
+            {
+                mn = a;
+                mx = a;
+                ct++;
+            }
+        }
     }
-    else
-    {
-        for (ll i = 1; i < n; i += 2)
-        {
-            ans[i] = i;
-        }
-        for (ll i = 0; i < n; i += 2)
-        {
-            ans[i] = i + 2;
-        }
-        if (n % 2)
-        {
-            swap(ans[n - 1], ans[1]);
-            ans[1] = n;
-        }
-        for (auto i : ans)
-            cout << i << " ";
-        cout << endl;
-    }
+    cout << ct << endl;
 }
 
 //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-

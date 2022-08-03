@@ -29,32 +29,50 @@ void online_judge()
 // Write solution here
 void solve()
 {
-    ll n;
-    cin >> n;
-    vector<ll> ans(n, 0);
-    if (n == 1)
+    ll n, m, x;
+    cin >> n >> m;
+    vector<ll> a(m, 0);
+    vector<ll> env;
+    for (ll i = 0; i < m; i++)
     {
-        cout << 1 << " " << endl;
+        cin >> a[i];
     }
-    else
+
+    sort(a.begin(), a.end());
+
+    ll p = 1;
+    for (ll i = 0; i < m; i++)
     {
-        for (ll i = 1; i < n; i += 2)
-        {
-            ans[i] = i;
-        }
-        for (ll i = 0; i < n; i += 2)
-        {
-            ans[i] = i + 2;
-        }
-        if (n % 2)
-        {
-            swap(ans[n - 1], ans[1]);
-            ans[1] = n;
-        }
-        for (auto i : ans)
-            cout << i << " ";
-        cout << endl;
+        if (a[i] - p > 0)
+            env.push_back(a[i] - p);
+        p = a[i] + 1;
     }
+
+    if ((a[0] == 1 || a[m - 1] == n) && (env.size() == 0))
+        env.push_back(n - 1);
+
+    else if (a[m - 1] != n)
+    {
+        env[0] += (n - a[m - 1]);
+    }
+
+    sort(env.begin(), env.end(), greater<ll>());
+
+    // for (auto i : env)
+    // cout << i << " ";
+
+    ll d = 1, ans = 0;
+    for (ll i = 0; i < env.size(); i++)
+    {
+        if (env[i] == d)
+            ans += 1;
+        else
+            ans += (d < env[i]) ? (env[i] - d) : 0;
+        d += 4;
+        // cout << ans << " ";
+    }
+    ans = n - ans;
+    cout << ans << endl;
 }
 
 //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-

@@ -31,30 +31,19 @@ void solve()
 {
     ll n;
     cin >> n;
-    vector<ll> ans(n, 0);
-    if (n == 1)
+    ll a[n];
+    bool mp[200001] = {false};
+    for (ll i = 0; i < n; i++)
+        cin >> a[i];
+    ll i;
+    for (i = n - 1; i >= 0; i--)
     {
-        cout << 1 << " " << endl;
+        if (mp[a[i]])
+            break;
+        else
+            mp[a[i]] = true;
     }
-    else
-    {
-        for (ll i = 1; i < n; i += 2)
-        {
-            ans[i] = i;
-        }
-        for (ll i = 0; i < n; i += 2)
-        {
-            ans[i] = i + 2;
-        }
-        if (n % 2)
-        {
-            swap(ans[n - 1], ans[1]);
-            ans[1] = n;
-        }
-        for (auto i : ans)
-            cout << i << " ";
-        cout << endl;
-    }
+    cout << i + 1 << endl;
 }
 
 //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-

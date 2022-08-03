@@ -29,31 +29,34 @@ void online_judge()
 // Write solution here
 void solve()
 {
-    ll n;
-    cin >> n;
-    vector<ll> ans(n, 0);
-    if (n == 1)
+    int n, m;
+    cin >> n >> m;
+    vector<pair<int, int>> un(n);
+    vector<vector<int>> mp(n);
+    for (int i = 0; i < n; i++)
     {
-        cout << 1 << " " << endl;
+        cin >> un[i].second;
+        un[i].first = i;
     }
-    else
+    sort(un.begin(), un.end(), [](const auto &a, const auto &b)
+         { return a.second < b.second; });
+    for (int i = 0; i < m; i++)
     {
-        for (ll i = 1; i < n; i += 2)
-        {
-            ans[i] = i;
-        }
-        for (ll i = 0; i < n; i += 2)
-        {
-            ans[i] = i + 2;
-        }
-        if (n % 2)
-        {
-            swap(ans[n - 1], ans[1]);
-            ans[1] = n;
-        }
-        for (auto i : ans)
-            cout << i << " ";
-        cout << endl;
+        int a, b;
+        cin >> a >> b;
+        mp[a - 1].push_back(b - 1);
+        mp[a - 1].push_back(a - 1);
+    }
+    int ans = 0;
+    int k;
+    for (k = 0; k < n; k++)
+    {
+        if (mp[un[k].first].size() % 2)
+            ans = un[k].second;
+    }
+    if (k > 1)
+    {
+        ans = min(ans, un[0].second + un[])
     }
 }
 

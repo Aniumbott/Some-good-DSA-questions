@@ -29,32 +29,29 @@ void online_judge()
 // Write solution here
 void solve()
 {
-    ll n;
-    cin >> n;
-    vector<ll> ans(n, 0);
-    if (n == 1)
+    ll n, h, m;
+    cin >> n >> h >> m;
+    h = (h * 60 + m);
+    ll ans = 1440;
+    while (n--)
     {
-        cout << 1 << " " << endl;
+        ll h1, m1;
+        cin >> h1 >> m1;
+        h1 = (h1 * 60 + m1);
+        if (h1 < h)
+        {
+            ans = min(ans, 1440 - h + h1);
+        }
+        else if (h1 > h)
+        {
+            ans = min(ans, h1 - h);
+        }
+        else
+        {
+            ans = 0;
+        }
     }
-    else
-    {
-        for (ll i = 1; i < n; i += 2)
-        {
-            ans[i] = i;
-        }
-        for (ll i = 0; i < n; i += 2)
-        {
-            ans[i] = i + 2;
-        }
-        if (n % 2)
-        {
-            swap(ans[n - 1], ans[1]);
-            ans[1] = n;
-        }
-        for (auto i : ans)
-            cout << i << " ";
-        cout << endl;
-    }
+    cout << ans / 60 << " " << ans % 60 << endl;
 }
 
 //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
